@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                pwsh(script:'Write-Output "Hello Powershell Core"')
+                pwsh (script:'Write-Output "Hello Powershell Core"')
                 /*
                 pwsh(script: 'docker images -a')
                 pwsh(script: """
