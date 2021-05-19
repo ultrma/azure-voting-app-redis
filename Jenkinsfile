@@ -7,6 +7,11 @@ pipeline {
                 echo "$GIT_BRANCH"
             }
         }
+        stage ('Test PS'){
+            steps{
+                powershell label: '', script:'Write-Output "Hello Powershell"'
+            }
+        }
         stage('Docker Build') {
             steps {
                 pwsh(script: 'docker images -a')
