@@ -15,7 +15,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 pwsh (script:'Write-Output "Hello Powershell Core"')
-                /*
+                
                 pwsh(script: 'docker images -a')
                 pwsh(script: """
                     cd azure-vote/
@@ -24,7 +24,7 @@ pipeline {
                     docker images -a
                     cd ..
                 """)
-                */
+                
             }
         }
     }
