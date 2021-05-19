@@ -7,16 +7,9 @@ pipeline {
                 echo "$GIT_BRANCH"
             }
         }
-        stage ('Test PS'){
-            steps{
-                powershell label: '', script:'Write-Output "Hello Powershell"'
-            }
-        }
         stage('Docker Build') {
             steps {
-                pwsh (script:'Write-Output "Hello Powershell Core"')
-                
-                pwsh(script: 'docker images -a')
+                     pwsh(script: 'docker images -a')
                 pwsh(script: """
                     cd azure-vote/
                     docker images -a
@@ -42,20 +35,20 @@ pipeline {
                echo "App failed to start :("
             }
          }
-      }
-      stage('Run Tests') {
-         steps {
-            pwsh(script: """
-               pytest ./tests/test_sample.py
-            """)
-         }
-      }
-      stage('Stop test app') {
-         steps {
-            pwsh(script: """
-               docker-compose down
-            """)
-         }
-      }
+        }
+        stage('Run Tests') {
+            steps {
+                pwsh(script: """
+                pytest ./tests/test_sample.py
+                """)
+            }
+        }
+        stage('Stop test app') {
+            steps {
+                pwsh(script: """
+                docker-compose down
+                """)
+            }
+        }
     }
 }
